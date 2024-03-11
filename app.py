@@ -20,8 +20,8 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add_todo():
-    todo = request.form.get('todo')
-    if todo:
+    if request.method == 'POST':
+        todo = request.form.get('todo')
         new_todo = Todo(task=todo)
         db.session.add(new_todo)
         db.session.commit()
